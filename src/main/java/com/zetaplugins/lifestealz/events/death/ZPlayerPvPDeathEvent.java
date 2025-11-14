@@ -6,23 +6,23 @@ import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+@Getter
 public class ZPlayerPvPDeathEvent extends ZPlayerDeathEventBase {
-    @Getter
     private final Player killer;
     
-    @Getter @Setter
+    @Setter
     private double heartsToLose;
     
-    @Getter @Setter
+    @Setter
     private double heartsKillerGains;
     
-    @Getter @Setter
+    @Setter
     private boolean shouldDropHearts;
     
-    @Getter @Setter
+    @Setter
     private boolean killerShouldGainHearts;
     
-    @Getter @Setter
+    @Setter
     private String deathMessage;
 
     public ZPlayerPvPDeathEvent(PlayerDeathEvent originalEvent, Player killer, double heartsToLose, double heartsKillerGains) {

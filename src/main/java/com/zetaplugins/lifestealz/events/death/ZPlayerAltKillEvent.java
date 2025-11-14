@@ -8,23 +8,22 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+@Getter
 public class ZPlayerAltKillEvent extends ZPlayerDeathEventBase {
-    @Getter
     private final Player suspectedAlt;
     
-    @Getter
     private final String sharedIP;
     
-    @Getter @Setter
+    @Setter
     private boolean shouldPreventKill;
     
-    @Getter @Setter
+    @Setter
     private boolean shouldLogAttempt;
     
-    @Getter @Setter
+    @Setter
     private boolean shouldSendMessage;
     
-    @Getter @Setter
+    @Setter
     private Component warningMessage;
 
     public ZPlayerAltKillEvent(PlayerDeathEvent originalEvent, Player suspectedAlt, String sharedIP) {

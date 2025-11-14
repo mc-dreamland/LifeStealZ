@@ -8,20 +8,18 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+@Getter
 public class ZPlayerBypassDeathEvent extends ZPlayerDeathEventBase {
-    @Getter
     private final Player killer; // Can be null
     
-    @Getter
     private final boolean isHeartLossBlocked;
     
-    @Getter
     private final boolean isHeartGainBlocked;
     
-    @Getter @Setter
+    @Setter
     private Component messageToVictim;
     
-    @Getter @Setter
+    @Setter
     private Component messageToKiller;
 
     public ZPlayerBypassDeathEvent(PlayerDeathEvent originalEvent, Player killer,

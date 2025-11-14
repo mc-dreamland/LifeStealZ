@@ -8,17 +8,16 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+@Getter
 public class ZPlayerHeartGainCooldownEvent extends ZPlayerDeathEventBase {
-    @Getter
     private final Player killer;
     
-    @Getter
     private final long timeLeftOnCooldown;
     
-    @Getter @Setter
+    @Setter
     private boolean shouldDropHeartsInstead;
     
-    @Getter @Setter
+    @Setter
     private Component cooldownMessage;
 
     public ZPlayerHeartGainCooldownEvent(PlayerDeathEvent originalEvent, Player killer, long timeLeft) {

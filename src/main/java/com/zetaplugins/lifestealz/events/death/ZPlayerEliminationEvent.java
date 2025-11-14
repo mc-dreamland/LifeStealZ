@@ -8,23 +8,22 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+@Getter
 public class ZPlayerEliminationEvent extends ZPlayerDeathEventBase {
-    @Getter
     private final Player killer; // Can be null for natural elimination
     
-    @Getter
     private final boolean isNaturalElimination;
     
-    @Getter @Setter
+    @Setter
     private boolean shouldBanPlayer;
     
-    @Getter @Setter
+    @Setter
     private boolean shouldAnnounceElimination;
     
-    @Getter @Setter
+    @Setter
     private Component eliminationMessage;
 
-    @Getter @Setter
+    @Setter
     private Component kickMessage;
 
     public ZPlayerEliminationEvent(PlayerDeathEvent originalEvent, Player killer) {

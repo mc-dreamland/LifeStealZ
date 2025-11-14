@@ -8,17 +8,16 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+@Getter
 public class ZPlayerMaxHeartsReachedEvent extends ZPlayerDeathEventBase {
-    @Getter
     private final Player killer;
     
-    @Getter
     private final double maxHeartsLimit;
     
-    @Getter @Setter
+    @Setter
     private boolean shouldDropHeartsInstead;
     
-    @Getter @Setter
+    @Setter
     private Component maxHeartsMessage;
 
     public ZPlayerMaxHeartsReachedEvent(PlayerDeathEvent originalEvent, Player killer, double maxHearts) {

@@ -1,11 +1,10 @@
 package com.zetaplugins.lifestealz;
 
 import com.zetaplugins.lifestealz.util.*;
-import com.zetaplugins.lifestealz.util.revive.ReviveTask;
 import com.zetaplugins.lifestealz.util.revive.ReviveTaskManager;
 import com.zetaplugins.zetacore.ZetaCorePlugin;
+import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
@@ -29,21 +28,37 @@ import java.io.File;
 
 public final class LifeStealZ extends ZetaCorePlugin {
 
+    @Getter
     private VersionChecker versionChecker;
+    @Getter
     private Storage storage;
+    @Getter
     private WorldGuardManager worldGuardManager;
+    @Getter
     private LanguageManager languageManager;
+    @Getter
     private ConfigManager configManager;
+    @Getter
     private RecipeManager recipeManager;
+    @Getter
     private GeyserManager geyserManager;
+    @Getter
     private GeyserPlayerFile geyserPlayerFile;
+    @Getter
     private WebHookManager webHookManager;
+    @Getter
     private GracePeriodManager gracePeriodManager;
+    @Getter
     private BypassManager bypassManager;
+    @Getter
     private EliminatedPlayersCache eliminatedPlayersCache;
+    @Getter
     private OfflinePlayerCache offlinePlayerCache;
+    @Getter
     private AsyncTaskManager asyncTaskManager;
+    @Getter
     private ReviveBeaconEffectManager reviveBeaconEffectManager;
+    @Getter
     private ReviveTaskManager reviveTaskManager;
     private final boolean hasWorldGuard = Bukkit.getPluginManager().getPlugin("WorldGuard") != null;
     private final boolean hasPlaceholderApi = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
@@ -133,58 +148,6 @@ public final class LifeStealZ extends ZetaCorePlugin {
         return new LifeStealZAPIImpl(getInstance());
     }
 
-    public AsyncTaskManager getAsyncTaskManager() {
-        return asyncTaskManager;
-    }
-
-    public ReviveBeaconEffectManager getReviveBeaconEffectManager() {
-        return reviveBeaconEffectManager;
-    }
-
-    public ReviveTaskManager getReviveTaskManager() {
-        return reviveTaskManager;
-    }
-
-    public VersionChecker getVersionChecker() {
-        return versionChecker;
-    }
-
-    public Storage getStorage() {
-        return storage;
-    }
-
-    public EliminatedPlayersCache getEliminatedPlayersCache() {
-        return eliminatedPlayersCache;
-    }
-
-    public OfflinePlayerCache getOfflinePlayerCache() {
-        return offlinePlayerCache;
-    }
-
-    public WorldGuardManager getWorldGuardManager() {
-        return worldGuardManager;
-    }
-
-    public RecipeManager getRecipeManager() {
-        return recipeManager;
-    }
-
-    public GracePeriodManager getGracePeriodManager() {
-        return gracePeriodManager;
-    }
-
-    public BypassManager getBypassManager() {
-        return bypassManager;
-    }
-
-    public GeyserManager getGeyserManager() {
-        return geyserManager;
-    }
-
-    public GeyserPlayerFile getGeyserPlayerFile() {
-        return geyserPlayerFile;
-    }
-
     public boolean hasWorldGuard() {
         return hasWorldGuard;
     }
@@ -197,33 +160,25 @@ public final class LifeStealZ extends ZetaCorePlugin {
         return hasGeyser;
     }
 
-    public WebHookManager getWebHookManager() {
-        return webHookManager;
-    }
-
-    public LanguageManager getLanguageManager() {
-        return languageManager;
-    }
-
-    public ConfigManager getConfigManager() {
-        return configManager;
-    }
-
     private Storage createPlayerDataStorage() {
-        switch (getConfigManager().getStorageConfig().getString("type").toLowerCase()) {
-            case "mysql":
+        return switch (getConfigManager().getStorageConfig().getString("type").toLowerCase()) {
+            case "mysql" -> {
                 getLogger().info("Using MySQL storage");
-                return new MySQLStorage(this);
-            case "sqlite":
+                yield new MySQLStorage(this);
+            }
+            case "sqlite" -> {
                 getLogger().info("Using SQLite storage");
-                return new SQLiteStorage(this);
-            case "mariadb":
+                yield new SQLiteStorage(this);
+            }
+            case "mariadb" -> {
                 getLogger().info("Using MariaDB storage");
-                return new MariaDBStorage(this);
-            default:
+                yield new MariaDBStorage(this);
+            }
+            default -> {
                 getLogger().warning("Invalid storage type in config.yml! Using SQLite storage as fallback.");
-                return new SQLiteStorage(this);
-        }
+                yield new SQLiteStorage(this);
+            }
+        };
     }
 
     public static void setMaxHealth(Player player, double maxHealth) {

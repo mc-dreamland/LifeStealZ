@@ -1,51 +1,51 @@
-# === Custom Items ===
+# === 自定义物品 ===
 
-# Here you can modify everything about the custom items
-# You can change which item is dropped on death in the main config.yml
+# 在这里你可以修改自定义物品的所有属性
+# 你可以在主配置 config.yml 中更改死亡时掉落的物品
 
-defaultheart: # <- This is the item id that can be used in recipes and for permissions
-  # This is the name of the item that is displayed in the inventory
-  name: "&cHeart"
-  # The lore is the description of the item that is displayed in the inventory
+defaultheart: # <- 这是物品ID，可用于配方和权限
+  # 这是物品在物品栏中显示的名称
+  name: "&c生命之心"
+  # lore是物品在物品栏中显示的描述
   lore:
-    - "&7Rightclick to use"
-  #  - "This would be a second line"
-  #  - "And this possibly a third line"
-  # The material is the item that is displayed in the inventory (Find all materials here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
+    - "&7右键使用"
+  #  - "这是第二行"
+  #  - "这可能是第三行"
+  # material是物品在物品栏中显示的材质 (所有材质列表: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
   material: "NETHER_STAR"
-  # If set to true, the enchant glint will be applied to the item
+  # 如果设置为true，物品将显示附魔光泽
   enchanted: false
-  # The custom model data of the item (set to 0 for no custom model data)
-  # When using Minecraft 1.21.4 or newer, items also have a "minecraft:custom_model_data" property of "lifestealz_{itemId}"
+  # 物品的自定义模型数据 (设为0表示无自定义模型数据)
+  # 当使用Minecraft 1.21.4或更新版本时，物品还具有"minecraft:custom_model_data"属性，值为"lifestealz_{itemId}"
   customModelId: 0
-  # Custom item type for the item. You can use:
-    # - "heart" for a heart item
-    # - "revive" for a revive item
-    # - "revivebeacon" for a revive beacon item -> This item must actually be a beacon to work!
-    # - "none" for a custom item that can be used for crafting and can be used as a normal item (e.g. if it is an enderpearl it still can be thrown)
-    # - "non-usable" for a custom item that can be used for crafting and cannot be used as a normal item (e.g. if it is an enderpearl it cannot be thrown)
+    # 物品的自定义类型。可以使用:
+    # - "heart" 表示生命之心物品
+    # - "revive" 表示复活物品
+    # - "revivebeacon" 表示复活信标物品 -> 此物品必须是信标才能工作!
+    # - "none" 表示可用于合成的自定义物品，也可以作为普通物品使用 (例如如果是末影珍珠，仍然可以投掷)
+  # - "non-usable" 表示可用于合成的自定义物品，但不能作为普通物品使用 (例如如果是末影珍珠，不能投掷)
   customItemType: "heart"
-  # --- Heart Item Settings --- (only relevant if customItemType is "heart")
-  # When customItemType is "heart", this value is used to determine how many hearts the item gives
+  # --- 生命之心物品设置 --- (仅当customItemType为"heart"时相关)
+  # 当customItemType为"heart"时，此值用于确定物品给予多少颗心
   customHeartValue: 1
-  # The minimum amount of hearts a player must have to use this item (only relevant if customItemType is "heart")
+  # 使用此物品时玩家必须拥有的最小心脏数 (仅当customItemType为"heart"时相关)
   minHearts: 0
-  # The maximum amount of hearts a player can have to use this item (-1 for infinite) (only relevant if customItemType is "heart")
+  # 使用此物品时玩家能拥有的最大心脏数 (-1表示无限) (仅当customItemType为"heart"时相关)
   maxHearts: -1
-  # --- End of Heart Item Settings ---
-  # If this item requires a permission to be used (lifestealz.item.defaultheart)
+  # --- 生命之心物品设置结束 ---
+  # 如果此物品需要权限才能使用 (lifestealz.item.defaultheart)
   requirePermission: false
-  # true if this item should be craftable
+  # 如果此物品可合成，设为true
   craftable: true
   recipes:
-    # You can add as many recipes as you want
+    # 你可以添加任意数量的配方
     1:
-      # Every item represents one slot in the crafting table
-      # The first item in a row is the left most item in the crafting table
-      # If you want a slot to be blank, use 'AIR' or 'empty'
-      # If you want to use a simple material, use the material name (e.g. "DIAMOND_BLOCK"). Find all materials here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
-      # If you want to use other custom item (like hearts) use the custom item name (e.g. "defaultheart")
-      # If you want to use block or item tags, use the tag with a '#' in front (e.g. "#logs" or "#wool")
+      # 每个物品代表合成表中的一个格子
+      # 每行第一个物品是合成表中最左边的物品
+      # 如果你想让某个格子为空，使用'AIR'或'empty'
+      # 如果你想使用简单材质，使用材质名称 (例如"DIAMOND_BLOCK")。所有材质列表: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+      # 如果你想使用其他自定义物品(如生命之心)，使用自定义物品名称 (例如"defaultheart")
+      # 如果你想使用方块或物品标签，使用带'#'前缀的标签 (例如"#logs"或"#wool")
       rowOne:
         - "GOLD_BLOCK"
         - "GOLD_BLOCK"
@@ -58,49 +58,49 @@ defaultheart: # <- This is the item id that can be used in recipes and for permi
         - "DIAMOND_BLOCK"
         - "DIAMOND_BLOCK"
         - "DIAMOND_BLOCK"
-  # If the item should be burnable (Not destroyed by fire, lava, explosions, cactus, etc.)
+  # 如果物品应防火 (不会被火、岩浆、爆炸、仙人掌等破坏)
   invulnerable: false
-  # If the item should despawn after laying on the ground for 5 minutes
+  # 如果物品在地面上5分钟后应消失
   despawnable: true
-  # If this list is empty ("[]"), the item is available in all worlds
-  # If you want to limit the item to specific worlds, add the world names here
+  # 如果此列表为空("[]")，物品在所有世界中都可用
+  # 如果你想限制物品只在特定世界可用，在此添加世界名称
   whitelistedWorlds: []
   sound:
     enabled: true
-    sound: ENTITY_PLAYER_LEVELUP # Find all sounds here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+    sound: ENTITY_PLAYER_LEVELUP # 所有声音列表: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
     volume: 1.0
     pitch: 1.0
 
 revive:
-  name: "&cRevive Beacon"
+  name: "&c复活信标"
   lore:
-    - "&7Place down to use"
-  # The material has to be a beacon if customItemType is "revivebeacon"
+    - "&7放置使用"
+  # 如果customItemType是"revivebeacon"，材质必须是信标
   material: "BEACON"
   enchanted: true
   customModelId: 0
   customItemType: "revivebeacon"
-  # --- Revive Beacon specific Settings --- (only relevant if customItemType is "revivebeacon")
-  # The time in seconds it takes to revive a player
+  # --- 复活信标特定设置 --- (仅当customItemType为"revivebeacon"时相关)
+  # 复活玩家所需的时间(秒)
   reviveTime: 30
-  # If players should be able to break the beacon while reviving, interrupting the revive process
+  # 如果玩家应能在复活过程中破坏信标，中断复活过程
   allowBreakingBeaconWhileReviving: true
-  # The material around the beacon (AIR for no material)
+  # 信标周围的材质 (AIR表示无材质)
   decoyMaterial: "RED_STAINED_GLASS"
-  # If the revive beacon should be surrounded by enchant particles
+  # 如果复活信标周围应显示附魔粒子
   showEnchantParticles: true
-  # If the revive beacon should show a laser while reviving
+  # 如果复活信标在复活过程中应显示激光
   showLaser: true
-  # The material of the inner part of the beacon laser
+  # 信标激光内部材质
   innerLaserMaterial: "RED_GLAZED_TERRACOTTA"
-  # The material of the outer part of the beacon laser
+  # 信标激光外部材质
   outerLaserMaterial: "RED_STAINED_GLASS"
-  # If the revive beacon should show a particle ring while reviving
+  # 如果复活信标在复活过程中应显示粒子环
   showParticleRing: true
-  # The color of the particle ring
-  # possible values: WHITE, GRAY, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, PINK
+  # 粒子环的颜色
+  # 可能值: WHITE, GRAY, RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, PINK
   particleColor: "RED"
-  # --- End of Revive Beacon specific Settings ---
+  # --- 复活信标特定设置结束 ---
   requirePermission: false # (lifestealz.item.revive)
   craftable: true
   recipes:
@@ -126,4 +126,4 @@ revive:
     volume: 1.0
     pitch: 1.0
 
-# You can add as many custom items as you want
+# 你可以添加任意数量的自定义物品

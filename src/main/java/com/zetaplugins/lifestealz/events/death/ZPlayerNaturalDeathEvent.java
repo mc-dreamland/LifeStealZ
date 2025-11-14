@@ -5,14 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+@Getter
 public class ZPlayerNaturalDeathEvent extends ZPlayerDeathEventBase {
-    @Getter @Setter
+    @Setter
     private double heartsToLose;
 
-    @Getter @Setter
+    @Setter
     private boolean shouldDropHearts;
 
-    @Getter @Setter
+    @Setter
     private String deathMessage;
 
     public ZPlayerNaturalDeathEvent(PlayerDeathEvent originalEvent, double heartsToLose) {
